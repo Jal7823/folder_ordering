@@ -13,7 +13,7 @@ def mover_a_imagenes(archivo):
     ruta_imagenes = Path(os.path.join(os.path.expanduser('~'), 'Imágenes'))
     ruta_destino = ruta_imagenes / archivo.name
     shutil.copy(archivo, ruta_destino)
-    archivo.unlink()  # Eliminar el archivo original después de copiar
+    archivo.unlink()  # Eliminar el archivo original después de copiar todo
     return ruta_destino
 
 
