@@ -29,6 +29,7 @@ Images: Files with extensions .png, .jpg, .jpg_large, and .png_large are moved t
 PDFs: Files with the .pdf extension are moved to the "Documents/docs" directory.
 CSV and Excel: Files with extensions .csv and .xls are moved to the "Documents/excel" directory.
 Author
-[Your Name]
+
+
 License
 This project is licensed under the MIT License.
