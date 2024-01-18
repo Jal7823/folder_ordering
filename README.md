@@ -13,7 +13,7 @@ Navigate to the directory where the script is located.
 Run the script using the command:
 
 ```bash
-python file_mover.py
+python file_organizer.py
 ```
 ## Description :paperclip:
 
