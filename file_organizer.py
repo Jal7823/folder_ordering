@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import shutil
 
 
 def obtener_rutas_descargas():
@@ -11,21 +12,24 @@ def obtener_rutas_descargas():
 def mover_a_imagenes(archivo):
     ruta_imagenes = Path(os.path.join(os.path.expanduser('~'), 'Imágenes'))
     ruta_destino = ruta_imagenes / archivo.name
-    os.rename(archivo, ruta_destino)
+    shutil.copy(archivo, ruta_destino)
+    archivo.unlink()  # Eliminar el archivo original después de copiar
     return ruta_destino
 
 
 def mover_a_documentos(archivo):
     ruta_documentos = Path(os.path.join(os.path.expanduser('~'), 'Documentos/docs'))
     ruta_destino = ruta_documentos / archivo.name
-    os.rename(archivo, ruta_destino)
+    shutil.copy(archivo, ruta_destino)
+    archivo.unlink()  # Eliminar el archivo original después de copiar
     return ruta_destino
 
 
 def mover_a_csv(archivo):
     ruta_csv = Path(os.path.join(os.path.expanduser('~'), 'Documentos/excel'))
     ruta_destino = ruta_csv / archivo.name
-    os.rename(archivo, ruta_destino)
+    shutil.copy(archivo, ruta_destino)
+    archivo.unlink()  # Eliminar el archivo original después de copiar
     return ruta_destino
 
 
