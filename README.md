@@ -9,11 +9,35 @@ This Python script is designed to organize files in the user's "Downloads" direc
 ## Usage :gear:
 Ensure you have Python installed on your system.
 
-Download the script file (file_mover.py).
+Download the script file (file_organize.py).
 
 Open a terminal or command prompt.
 
 Navigate to the directory where the script is located.
+
+## Environment
+To set up the environment, create a virtual environment using ```virtualenv``` with the following command:
+
+```bash
+python3 -m venv venv
+```
+
+activate the virtual environment
+
+### Linux and mac
+```bash
+source venv/bin/activate
+```
+
+### windows 
+```bash
+.\venv\script\activate
+```
+
+:warning:
+Make sure to activate the virtual environment before proceeding with your project.
+
+## Run script
 
 Run the script using the command:
 
@@ -24,17 +48,18 @@ python file_organizer.py
 
 The script performs the following tasks:
 
-Retrieves the user's home directory.
-Sets up paths for specific directories such as "Downloads," "Pictures," "Documents/docs," and "Documents/excel."
-Changes the current working directory to the "Downloads" directory.
-Lists all files in the "Downloads" directory.
-Iterates through each file and moves it to the corresponding directory based on its file extension.
-File Organization Rules
-Images: Files with extensions .png, .jpg, .jpg_large, and .png_large are moved to the "Pictures" directory.
-PDFs: Files with the .pdf extension are moved to the "Documents/docs" directory.
-CSV and Excel: Files with extensions .csv and .xls are moved to the "Documents/excel" directory.
-Author
+- Retrieves the user's home directory.
+- Sets up paths for specific directories such as "Downloads," "Pictures," "Documents/docs," and "Documents/excel."
+- Changes the current working directory to the "Downloads" directory.
+- Lists all files in the "Downloads" directory.
+- Iterates through each file and moves it to the corresponding directory based on its file extension.
+- File Organization Rules
+- Images: Files with extensions .png, .jpg, .jpg_large, and .png_large are moved to the "Pictures" directory.
+- PDFs: Files with the .pdf extension are moved to the "Documents/docs" directory.
+- CSV and Excel: Files with extensions .csv and .xls are moved to the "Documents/excel" directory.
 
+Author
+**Jalberth Mosquera**
 
 License
 This project is licensed under the MIT License.
