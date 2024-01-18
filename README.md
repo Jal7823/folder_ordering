@@ -1,3 +1,8 @@
+[![File organizer](https://github.com/Jal7823/folder_ordering/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/Jal7823/folder_ordering/actions/workflows/python-app.yml)
+[![File organizer](https://github.com/Jal7823/folder_ordering/actions/workflows/python-app.yml/badge.svg?branch=develop)](https://github.com/Jal7823/folder_ordering/actions/workflows/python-app.yml)
+
+
+
 # File Mover Script :rocket:
 This Python script is designed to organize files in the user's "Downloads" directory by moving them to specific folders based on their file extensions.
 
@@ -29,6 +34,7 @@ Images: Files with extensions .png, .jpg, .jpg_large, and .png_large are moved t
 PDFs: Files with the .pdf extension are moved to the "Documents/docs" directory.
 CSV and Excel: Files with extensions .csv and .xls are moved to the "Documents/excel" directory.
 Author
-[Your Name]
+
+
 License
 This project is licensed under the MIT License.

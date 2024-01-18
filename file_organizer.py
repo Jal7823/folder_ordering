@@ -1,72 +1,53 @@
 from pathlib import Path
 import os
+import shutil
 
-# Obtener el directorio de inicio del usuario actual
-ruta_descargas = Path(os.path.join(os.path.expanduser('~'), 'Descargas'))
-ruta_imagenes = Path(os.path.join(os.path.expanduser('~'), 'Imágenes'))
-ruta_documentos = Path(os.path.join(os.path.expanduser('~'), 'Documentos/docs'))
-ruta_csv = Path(os.path.join(os.path.expanduser('~'), 'Documentos/excel'))
 
-# Cambiar el directorio de trabajo actual al directorio "Descargas"
-os.chdir(ruta_descargas)
+def obtener_rutas_descargas():
+    ruta_descargas = Path(os.path.join(os.path.expanduser('~'), 'Descargas'))
+    os.chdir(ruta_descargas)
+    return list(ruta_descargas.glob('*'))
 
-# Obtener una lista de rutas de todos los archivos en el directorio
-archivos_en_descargas = list(ruta_descargas.glob('*'))
 
-# Iterar sobre cada archivo en el directorio
-for archivo in archivos_en_descargas:
-    # Obtener la extensión del archivo
-    extension = archivo.suffix
-    print('extensión ==>', extension)
+def mover_a_imagenes(archivo):
+    ruta_imagenes = Path(os.path.join(os.path.expanduser('~'), 'Imágenes'))
+    ruta_destino = ruta_imagenes / archivo.name
+    shutil.copy(archivo, ruta_destino)
+    archivo.unlink()  # Eliminar el archivo original después de copiar
+    return ruta_destino
 
-    match extension:
-        # images
-        case '.png':
-            # Construir la ruta de destino
-            ruta_destino = ruta_imagenes / archivo.name
-            # Mover el archivo
-            os.rename(archivo, ruta_destino)
-            print(f"Se movió '{archivo.name}' a '{ruta_imagenes}'")
 
-        case '.jpg':
-            # Construir la ruta de destino
-            ruta_destino = ruta_imagenes / archivo.name
-            # Mover el archivo
-            os.rename(archivo, ruta_destino)
-            print(f"Se movió '{archivo.name}' a '{ruta_imagenes}'")
+def mover_a_documentos(archivo):
+    ruta_documentos = Path(os.path.join(os.path.expanduser('~'), 'Documentos/docs'))
+    ruta_destino = ruta_documentos / archivo.name
+    shutil.copy(archivo, ruta_destino)
+    archivo.unlink()  # Eliminar el archivo original después de copiar
+    return ruta_destino
 
-        case '.jpg_large':
-            # Construir la ruta de destino
-            ruta_destino = ruta_imagenes / archivo.name
-            # Mover el archivo
-            os.rename(archivo, ruta_destino)
-            print(f"Se movió '{archivo.name}' a '{ruta_imagenes}'")
 
-        case '.png_large':
-            # Construir la ruta de destino
-            ruta_destino = ruta_imagenes / archivo.name
-            # Mover el archivo
-            os.rename(archivo, ruta_destino)
-            print(f"Se movió '{archivo.name}' a '{ruta_imagenes}'")
-        # pdf
-        case '.pdf':
-            # Construir la ruta de destino
-            ruta_destino = ruta_documentos / archivo.name
-            # Mover el archivo
-            os.rename(archivo, ruta_destino)
-            print(f"Se movió '{archivo.name}' a '{ruta_documentos}'")
+def mover_a_csv(archivo):
+    ruta_csv = Path(os.path.join(os.path.expanduser('~'), 'Documentos/excel'))
+    ruta_destino = ruta_csv / archivo.name
+    shutil.copy(archivo, ruta_destino)
+    archivo.unlink()  # Eliminar el archivo original después de copiar
+    return ruta_destino
 
-        # csv
-        case '.csv':
-            # Construir la ruta de destino
-            ruta_destino = ruta_csv / archivo.name
-            # Mover el archivo
-            os.rename(archivo, ruta_destino)
-            print(f"Se movió '{archivo.name}' a '{ruta_csv}'")
 
-        case '.xls':
-            # Construir la ruta de destino
-            ruta_destino = ruta_csv / archivo.name
-            # Mover el archivo
-            os.rename(archivo, ruta_destino)
-            print(f"Se movió '{archivo.name}' a '{ruta_csv}'")
+if __name__ == "__main__":
+    archivos_en_descargas = obtener_rutas_descargas()
+
+    for archivo in archivos_en_descargas:
+        extension = archivo.suffix
+        print('extensión ==>', extension)
+
+        if extension in {'.png', '.jpg', '.jpg_large', '.png_large'}:
+            ruta_destino = mover_a_imagenes(archivo)
+            print(f"Se movió '{archivo.name}' a '{ruta_destino}'")
+
+        elif extension == '.pdf':
+            ruta_destino = mover_a_documentos(archivo)
+            print(f"Se movió '{archivo.name}' a '{ruta_destino}'")
+
+        elif extension in {'.csv', '.xls'}:
+            ruta_destino = mover_a_csv(archivo)
+            print(f"Se movió '{archivo.name}' a '{ruta_destino}'")
