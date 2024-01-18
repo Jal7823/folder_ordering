@@ -1,3 +1,8 @@
+[![File organizer](https://github.com/Jal7823/folder_ordering/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/Jal7823/folder_ordering/actions/workflows/python-app.yml)
+[![File organizer](https://github.com/Jal7823/folder_ordering/actions/workflows/python-app.yml/badge.svg?branch=develop)](https://github.com/Jal7823/folder_ordering/actions/workflows/python-app.yml)
+
+
+
 # File Mover Script :rocket:
 This Python script is designed to organize files in the user's "Downloads" directory by moving them to specific folders based on their file extensions.
 
